@@ -1,88 +1,40 @@
 package com.funfit.dao;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 public class DBConnection {
 
 
-public static Connection getConnection()
-throws Exception{
+    private static final String URL =
+            "jdbc:mysql://localhost:3306/funfit";
 
 
-Class.forName(
-"com.mysql.cj.jdbc.Driver"
-);
+    private static final String USER =
+            "root";
 
 
-return DriverManager.getConnection(
-
-getSetting("funfit.db.url", "FUNFIT_DB_URL", "jdbc:mysql://localhost:3306/funfit"),
-getSetting("funfit.db.user", "FUNFIT_DB_USER", "root"),
-getRequiredSetting("funfit.db.password", "Dbpass@123456")
-
-);
+    private static final String PASSWORD =
+            "Dbpass@123456";
 
 
-}
+    public static Connection getConnection()
+            throws Exception {
 
 
-private static String getSetting(
-String propertyName,
-String environmentName,
-String defaultValue
-){
+        Class.forName(
+            "com.mysql.cj.jdbc.Driver"
+        );
 
 
-String value = System.getProperty(propertyName);
+        return DriverManager.getConnection(
+                URL,
+                USER,
+                PASSWORD
+        );
 
+    }
 
-if(value == null || value.isBlank()){
-
-
-value = System.getenv(environmentName);
-
-
-}
-
-
-return value == null || value.isBlank()
-? defaultValue
-: value;
-
-
-}
-
-
-private static String getRequiredSetting(
-String propertyName,
-String environmentName
-){
-
-
-String password = getSetting(
-propertyName,
-environmentName,
-null
-);
-
-
-if(password == null){
-
-
-throw new IllegalStateException(
-"Configure the database password with " +
-environmentName + " or -D" + propertyName
-);
-
-
-}
-
-
-return password;
-
-
-}
 
 }

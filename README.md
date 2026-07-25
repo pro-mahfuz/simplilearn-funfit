@@ -26,6 +26,14 @@ mvn -Pdev-server package exec:java
 
 Open `http://localhost:8080/FunFit/` after the server starts.
 
+## Run in STS
+
+1. Import the folder as an **Existing Maven Project**.
+2. Right-click `FunFit Dev Server.launch` and choose **Run As > FunFit Dev Server**.
+3. Open `http://localhost:8080/FunFit/`.
+
+Alternatively, add the project to an STS **Tomcat 9** server. The project is configured for Java 17 and Servlet 4.0, with the context root `FunFit`.
+
 To deploy to an external Servlet 4-compatible container such as Tomcat 9, package the application with Maven:
 
 ```powershell

@@ -1,0 +1,10 @@
+com\funfit\dao\ParticipantDAO.class
+com\funfit\servlet\ParticipantServlet.class
+com\funfit\repository\BatchRepository.class
+com\funfit\servlet\BatchServlet.class
+com\funfit\dao\DBConnection.class
+com\funfit\model\Batch.class
+com\funfit\model\Participant.class
+com\funfit\FunFitApplication.class
+com\funfit\dao\BatchDAO.class
+com\funfit\repository\ParticipantRepository.class
